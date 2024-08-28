@@ -1,12 +1,16 @@
-import { useState, useContext } from 'react';
-import TranslationContext from '../context/TranslationContext';
-import ThemeContext from '../context/ThemeContext';
+import { useState } from 'react';
+import { useModals } from '../context/ModalsContext';
+import { useTransactions } from '../context/TransactionsContext';
+import { useTheme } from '../context/ThemeContext';
+import { useTranslation } from '../context/TranslationContext';
 
 const types = ['Income', 'Expense'];
 
-export default function FilterTransactionForm({ setIsFilterOpen, categories, transactions, onFilterTransactions }) {
-	const translation = useContext(TranslationContext);
-	const theme = useContext(ThemeContext);
+export default function FilterTransactionForm({ categories }) {
+	const { translation } = useTranslation();
+	const { theme } = useTheme();
+	const { dispatch: dispatchModals } = useModals();
+	const { transactions, dispatch: dispatchTransactions } = useTransactions();
 
 	const [selectedTypes, setSelectedTypes] = useState(new Array(2).fill(true));
 	const [selectedCategories, setSelectedCategories] = useState(new Array(categories.length).fill(true));
@@ -68,8 +72,8 @@ export default function FilterTransactionForm({ setIsFilterOpen, categories, tra
 			},
 		};
 
-		onFilterTransactions(filters);
-		setIsFilterOpen(false);
+		dispatchTransactions({ type: 'filter', payload: filters });
+		dispatchModals({ type: 'toggleFilter' });
 	}
 
 	return (
@@ -132,7 +136,7 @@ export default function FilterTransactionForm({ setIsFilterOpen, categories, tra
 				</div>
 			</div>
 			<div className="modal-footer">
-				<button className={`btn ${theme === 'dark' && 'dark'}`} onClick={() => setIsFilterOpen(false)}>
+				<button className={`btn ${theme === 'dark' && 'dark'}`} onClick={() => dispatchModals({ type: 'toggleFilter' })}>
 					{translation.cancel}
 				</button>
 				<button className="btn btn-primary" onClick={handleSubmit}>

@@ -1,8 +1,10 @@
-import { useContext, useState } from 'react';
-import TranslationContext from '../context/TranslationContext';
-import ThemeContext from '../context/ThemeContext';
+import { useState } from 'react';
+import { useTranslation } from '../context/TranslationContext';
+import { useTheme } from '../context/ThemeContext';
+import { useTransactions } from '../context/TransactionsContext';
+import { useModals } from '../context/ModalsContext';
 
-export default function AddTransactionForm({ onCancelAdd, onAddTransaction, onEditTransaction, transaction }) {
+export default function AddTransactionForm({ transaction }) {
 	const [title, setTitle] = useState(transaction?.title || '');
 	const [type, setType] = useState(transaction?.type || '');
 	const [category, setCategory] = useState(transaction?.category || '');
@@ -12,10 +14,17 @@ export default function AddTransactionForm({ onCancelAdd, onAddTransaction, onEd
 		const initialDate = transaction?.date ? new Date(transaction.date) : new Date();
 		return isNaN(initialDate.getTime()) ? new Date() : initialDate;
 	});
-	const translation = useContext(TranslationContext);
-	const theme = useContext(ThemeContext);
+	const { translation } = useTranslation();
+	const { theme } = useTheme();
+	const { dispatch: dispatchTransactions } = useTransactions();
+	const { dispatch: dispatchModals } = useModals();
 
 	const formattedDate = date.toISOString().split('T')[0];
+
+	function handleClose() {
+		dispatchTransactions({ type: 'transaction/select', payload: null });
+		dispatchModals({ type: 'toggleAdd' });
+	}
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -30,16 +39,16 @@ export default function AddTransactionForm({ onCancelAdd, onAddTransaction, onEd
 			description,
 		};
 
-		if (!transaction) onAddTransaction(newTransaction);
-		if (transaction) onEditTransaction(newTransaction);
-		onCancelAdd();
+		if (!transaction) dispatchTransactions({ type: 'transaction/add', payload: newTransaction });
+		if (transaction) dispatchTransactions({ type: 'transaction/edit', payload: newTransaction });
+		dispatchModals({ type: 'toggleAdd' });
 	}
 
 	return (
 		<div className={`modal ${theme === 'dark' && 'dark'}`}>
 			<div className="modal-header">
 				<h1>{translation.addNewTransaction}</h1>
-				<div className="close-btn" onClick={onCancelAdd}>
+				<div className="close-btn" onClick={handleClose}>
 					&times;
 				</div>
 			</div>

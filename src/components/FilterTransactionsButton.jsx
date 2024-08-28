@@ -1,13 +1,14 @@
-import { useState, useContext } from 'react';
-import TranslationContext from '../context/TranslationContext';
-import ThemeContext from '../context/ThemeContext';
+import { useModals } from '../context/ModalsContext';
+import { useTranslation } from '../context/TranslationContext';
+import { useTheme } from '../context/ThemeContext';
 
-export default function FilterTransactionsButton({ setIsFilterOpen }) {
-	const translation = useContext(TranslationContext);
-	const theme = useContext(ThemeContext);
+export default function FilterTransactionsButton() {
+	const { translation } = useTranslation();
+	const { theme } = useTheme();
+	const { dispatch: dispatchModals } = useModals();
 
 	return (
-		<button className={`btn ${theme === 'dark' && 'light-dark'}`} onClick={() => setIsFilterOpen(true)}>
+		<button className={`btn ${theme === 'dark' && 'light-dark'}`} onClick={() => dispatchModals({ type: 'toggleFilter' })}>
 			{translation.filter}
 		</button>
 	);

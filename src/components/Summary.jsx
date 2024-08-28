@@ -1,9 +1,10 @@
-import { useContext } from 'react';
-import TranslationContext from '../context/TranslationContext';
 import DataBox from './DataBox';
+import { useTransactions } from '../context/TransactionsContext';
+import { useTranslation } from '../context/TranslationContext';
 
-export default function Summary({ transactions }) {
-	const translation = useContext(TranslationContext);
+export default function Summary() {
+	const { sortedTransactions: transactions } = useTransactions();
+	const { translation } = useTranslation();
 
 	const incomeSum =
 		transactions.length > 0

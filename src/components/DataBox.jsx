@@ -1,9 +1,8 @@
-import { useContext } from 'react';
-import ThemeContext from '../context/ThemeContext';
+import { useTheme } from '../context/ThemeContext';
 import * as CONFIG from '../config';
 
 export default function DataBox({ value, description }) {
-	const theme = useContext(ThemeContext);
+	const { theme } = useTheme();
 
 	return (
 		<div className={`dataBox ${theme === 'dark' && 'dark'}`}>

@@ -1,14 +1,17 @@
-import { useContext } from 'react';
-import TranslationContext from '../context/TranslationContext';
-import ThemeContext from '../context/ThemeContext';
+import { useModals } from '../context/ModalsContext';
+import { useTransactions } from '../context/TransactionsContext';
+import { useTranslation } from '../context/TranslationContext';
+import { useTheme } from '../context/ThemeContext';
 
-export default function DeleteTransactionForm({ setIsDelOpen, selectedID, onRemoveTransaction }) {
-	const translation = useContext(TranslationContext);
-	const theme = useContext(ThemeContext);
+export default function DeleteTransactionForm() {
+	const { translation } = useTranslation();
+	const { theme } = useTheme();
+	const { dispatch: dispatchModals } = useModals();
+	const { selectedID, dispatch: dispatchTransactions } = useTransactions();
 
 	function handleConfirmClick() {
-		onRemoveTransaction(selectedID);
-		setIsDelOpen(false);
+		dispatchTransactions({ type: 'transaction/remove', payload: selectedID });
+		dispatchModals({ type: 'toggleDelete' });
 	}
 
 	return (
@@ -20,7 +23,7 @@ export default function DeleteTransactionForm({ setIsDelOpen, selectedID, onRemo
 				<p>{translation.doYouWantDelete}</p>
 			</div>
 			<div className="modal-footer">
-				<button className="btn" onClick={() => setIsDelOpen(false)}>
+				<button className="btn" onClick={() => dispatchModals({ type: 'toggleDelete' })}>
 					{translation.cancel}
 				</button>
 				<button className="btn btn-primary" onClick={handleConfirmClick}>

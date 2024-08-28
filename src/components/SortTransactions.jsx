@@ -1,16 +1,17 @@
-import { useContext } from 'react';
-import TranslationContext from '../context/TranslationContext';
-import ThemeContext from '../context/ThemeContext';
+import { useTheme } from '../context/ThemeContext';
+import { useTransactions } from '../context/TransactionsContext';
+import { useTranslation } from '../context/TranslationContext';
 
-export default function SortTransactions({ sortType, setSortType }) {
-	const translation = useContext(TranslationContext);
-	const theme = useContext(ThemeContext);
+export default function SortTransactions() {
+	const { sortType, dispatch } = useTransactions();
+	const { translation } = useTranslation();
+	const { theme } = useTheme();
 
 	return (
 		<select
 			className={`sort-transactions ${theme === 'dark' && 'light-dark'}`}
 			value={sortType}
-			onChange={(e) => setSortType(e.target.value)}
+			onChange={(e) => dispatch({ type: 'sort', payload: e.target.value })}
 		>
 			<option value="typeASC">
 				{translation.sortByType} {translation.ASC}

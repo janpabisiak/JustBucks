@@ -1,16 +1,17 @@
-import { useContext } from 'react';
-import ThemeContext from '../context/ThemeContext';
+import { useTheme } from '../context/ThemeContext';
+import { useTransactions } from '../context/TransactionsContext';
 
-export default function Pagination({ page, setPage, pages }) {
+export default function Pagination({ pages }) {
 	const pageNumbers = Array.from({ length: pages }, (_, index) => index + 1);
-	const theme = useContext(ThemeContext);
+	const { theme } = useTheme();
+	const { page, dispatchTransactions } = useTransactions();
 
 	function handleDecreasePage() {
-		if (page > 1) setPage(--page);
+		if (page > 1) dispatchTransactions({ type: 'page/set', payload: page - 1 });
 	}
 
 	function handleIncreasePage() {
-		if (page < pages) setPage(++page);
+		if (page < pages) dispatchTransactions({ type: 'page/set', payload: page + 1 });
 	}
 
 	return (
@@ -19,7 +20,11 @@ export default function Pagination({ page, setPage, pages }) {
 				←
 			</span>
 			{pageNumbers.map((i) => (
-				<span className={page === i ? 'active' : ''`${theme === 'dark' && 'dark'}`} key={i} onClick={() => setPage(i)}>
+				<span
+					className={page === i ? 'active' : ''`${theme === 'dark' && 'dark'}`}
+					key={i}
+					onClick={() => dispatchTransactions({ type: 'page/set', payload: i })}
+				>
 					{i}
 				</span>
 			))}

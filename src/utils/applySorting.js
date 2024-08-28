@@ -1,5 +1,7 @@
 export default function applySorting(transactions, sortType) {
 	return [...transactions].sort((a, b) => {
+		const dateA = new Date(a.date);
+		const dateB = new Date(b.date);
 		switch (sortType) {
 			case 'typeASC':
 				return a.type.localeCompare(b.type);
@@ -18,9 +20,9 @@ export default function applySorting(transactions, sortType) {
 			case 'amountDESC':
 				return b.amount - a.amount;
 			case 'dateASC':
-				return a.date - b.date;
+				return dateA - dateB;
 			default:
-				return b.date - a.date;
+				return dateB - dateA;
 		}
 	});
 }

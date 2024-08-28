@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import ThemeContext from '../context/ThemeContext';
+import { useTheme } from '../context/ThemeContext';
 
 export default function SelectLanguage({ language, onChangeLanguage }) {
-	const theme = useContext(ThemeContext);
+	const { theme } = useTheme();
 
 	return (
 		<select value={language} className={`${theme === 'dark' && 'dark'}`} onChange={(e) => onChangeLanguage(e.target.value)}>

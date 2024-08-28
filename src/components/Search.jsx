@@ -1,10 +1,11 @@
-import { useContext } from 'react';
-import TranslationContext from '../context/TranslationContext';
-import ThemeContext from '../context/ThemeContext';
+import { useTheme } from '../context/ThemeContext';
+import { useTransactions } from '../context/TransactionsContext';
+import { useTranslation } from '../context/TranslationContext';
 
-export default function Search({ searchQuery, setSearchQuery }) {
-	const translation = useContext(TranslationContext);
-	const theme = useContext(ThemeContext);
+export default function Search() {
+	const { searchQuery, dispatch } = useTransactions();
+	const translation = useTranslation();
+	const theme = useTheme();
 
 	return (
 		<input
@@ -12,7 +13,7 @@ export default function Search({ searchQuery, setSearchQuery }) {
 			className={`${theme === 'dark' && 'light-dark'}`}
 			placeholder={translation.searchForTransaction}
 			value={searchQuery}
-			onChange={(e) => setSearchQuery(e.target.value)}
+			onChange={(e) => dispatch({ type: 'search', payload: e.target.value })}
 		/>
 	);
 }

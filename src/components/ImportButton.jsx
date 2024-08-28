@@ -1,13 +1,14 @@
-import { useContext } from 'react';
-import TranslationContext from '../context/TranslationContext';
-import ThemeContext from '../context/ThemeContext';
+import { useModals } from '../context/ModalsContext';
+import { useTranslation } from '../context/TranslationContext';
+import { useTheme } from '../context/ThemeContext';
 
-export default function ImportButton({ setIsImportOpen }) {
-	const translation = useContext(TranslationContext);
-	const theme = useContext(ThemeContext);
+export default function ImportButton() {
+	const { translation } = useTranslation();
+	const { theme } = useTheme();
+	const { dispatch: dispatchModals } = useModals();
 
 	return (
-		<button className={`btn import-btn ${theme === 'dark' && 'dark'}`} onClick={() => setIsImportOpen(true)}>
+		<button className={`btn import-btn ${theme === 'dark' && 'dark'}`} onClick={() => dispatchModals({ type: 'toggleImport' })}>
 			{translation.import}
 		</button>
 	);

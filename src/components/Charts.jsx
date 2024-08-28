@@ -1,7 +1,10 @@
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
+import { useTransactions } from '../context/TransactionsContext';
 
-export default function Charts({ categories, transactions }) {
+export default function Charts({ categories }) {
+	const { sortedTransactions: transactions } = useTransactions();
+
 	function calculateExpenses() {
 		const expenses = categories.map((category) => {
 			return transactions

@@ -1,11 +1,13 @@
-import { useRef, useContext } from 'react';
-import TranslationContext from '../context/TranslationContext';
-import ThemeContext from '../context/ThemeContext';
+import { useRef } from 'react';
+import { useTranslation } from '../context/TranslationContext';
+import { useTheme } from '../context/ThemeContext';
+import { useTransactions } from '../context/TransactionsContext';
 
-export default function ExportButton({ transactions }) {
+export default function ExportButton() {
 	const exportButton = useRef(null);
-	const translation = useContext(TranslationContext);
-	const theme = useContext(ThemeContext);
+	const { transactions } = useTransactions();
+	const { translation } = useTranslation();
+	const { theme } = useTheme();
 
 	function handleExportData() {
 		const blob = new Blob([JSON.stringify(transactions)], { type: 'application/json' });

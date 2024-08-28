@@ -1,21 +1,24 @@
-import { useContext } from 'react';
-import TranslationContext from '../context/TranslationContext';
 import * as CONFIG from '../config';
-import ThemeContext from '../context/ThemeContext';
+import { useModals } from '../context/ModalsContext';
+import { useTheme } from '../context/ThemeContext';
+import { useTransactions } from '../context/TransactionsContext';
+import { useTranslation } from '../context/TranslationContext';
 
-export default function Transaction({ transaction, setSelectedID, setIsAddOpen, setIsDelOpen }) {
-	const translation = useContext(TranslationContext);
-	const theme = useContext(ThemeContext);
+export default function Transaction({ transaction }) {
+	const { translation } = useTranslation();
+	const { theme } = useTheme();
+	const { dispatch: dispatchTransactions } = useTransactions();
+	const { dispatch: dispatchModals } = useModals();
 	const date = new Date(transaction.date);
 
 	function handleEditClick() {
-		setSelectedID(transaction.id);
-		setIsAddOpen(true);
+		dispatchTransactions({ type: 'transaction/select', payload: transaction.id });
+		dispatchModals({ type: 'toggleAdd' });
 	}
 
 	function handleDeleteClick() {
-		setSelectedID(transaction.id);
-		setIsDelOpen(true);
+		dispatchTransactions({ type: 'transaction/select', payload: transaction.id });
+		dispatchModals({ type: 'toggleDelete' });
 	}
 
 	return (

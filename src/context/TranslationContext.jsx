@@ -1,5 +1,24 @@
-import { createContext } from 'react';
+import { createContext, useContext, useState } from 'react';
+import translations from '../locales';
 
 const TranslationContext = createContext();
 
-export default TranslationContext;
+function TranslationProvider({ children }) {
+	const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'english');
+	const translation = translations[language];
+
+	function handleChangeLanguage() {
+		setLanguage(language);
+		localStorage.setItem('language', language);
+	}
+
+	return <TranslationContext.Provider value={{ language, handleChangeLanguage, translation }}>{children}</TranslationContext.Provider>;
+}
+
+function useTranslation() {
+	const context = useContext(TranslationContext);
+	if (context === undefined) throw new Error('TranslationContext used outside of TranslationProvider scope.');
+	return context;
+}
+
+export { TranslationProvider, useTranslation };

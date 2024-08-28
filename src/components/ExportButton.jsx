@@ -1,7 +1,11 @@
-import { useRef } from 'react';
+import { useRef, useContext } from 'react';
+import TranslationContext from '../context/TranslationContext';
+import ThemeContext from '../context/ThemeContext';
 
-export default function ExportButton({ transactions, translation }) {
+export default function ExportButton({ transactions }) {
 	const exportButton = useRef(null);
+	const translation = useContext(TranslationContext);
+	const theme = useContext(ThemeContext);
 
 	function handleExportData() {
 		const blob = new Blob([JSON.stringify(transactions)], { type: 'application/json' });
@@ -17,7 +21,7 @@ export default function ExportButton({ transactions, translation }) {
 	}
 
 	return (
-		<button className="btn export-btn" ref={exportButton} onClick={handleExportData}>
+		<button className={`btn export-btn ${theme === 'dark' && 'dark'}`} ref={exportButton} onClick={handleExportData}>
 			{translation.export}
 		</button>
 	);

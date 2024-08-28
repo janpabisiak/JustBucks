@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import TranslationContext from '../context/TranslationContext';
+import ThemeContext from '../context/ThemeContext';
 
 const types = ['Income', 'Expense'];
 
-export default function FilterTransactionForm({ setIsFilterOpen, transactions, onFilterTransactions, translation }) {
-	const categoriesTemp = transactions.map((transaction) => transaction.category);
-	const categories = Array.from(new Set(categoriesTemp));
+export default function FilterTransactionForm({ setIsFilterOpen, categories, transactions, onFilterTransactions }) {
+	const translation = useContext(TranslationContext);
+	const theme = useContext(ThemeContext);
 
 	const [selectedTypes, setSelectedTypes] = useState(new Array(2).fill(true));
 	const [selectedCategories, setSelectedCategories] = useState(new Array(categories.length).fill(true));
-	const [amountRange, setAmountRange] = useState(function () {
+	const [amountRange, setAmountRange] = useState(() => {
 		const minAmount = transactions.reduce((prev, curr) => (prev.amount < curr.amount ? prev : curr)).amount;
 		const maxAmount = transactions.reduce((prev, curr) => (prev.amount > curr.amount ? prev : curr)).amount;
 		return {
@@ -16,9 +18,9 @@ export default function FilterTransactionForm({ setIsFilterOpen, transactions, o
 			max: maxAmount,
 		};
 	});
-	const [dateRange, setDateRange] = useState(function () {
-		const minDate = transactions.reduce((prev, curr) => (prev.date.getTime() < curr.date.getTime() ? prev : curr)).date;
-		const maxDate = transactions.reduce((prev, curr) => (prev.date.getTime() > curr.date.getTime() ? prev : curr)).date;
+	const [dateRange, setDateRange] = useState(() => {
+		const minDate = new Date(transactions.reduce((prev, curr) => (new Date(prev.date) < new Date(curr.date) ? prev : curr)).date);
+		const maxDate = new Date(transactions.reduce((prev, curr) => (new Date(prev.date) > new Date(curr.date) ? prev : curr)).date);
 		return {
 			min: minDate,
 			max: maxDate,
@@ -71,7 +73,7 @@ export default function FilterTransactionForm({ setIsFilterOpen, transactions, o
 	}
 
 	return (
-		<div className="modal">
+		<div className={`modal ${theme === 'dark' && 'light-dark'}`}>
 			<div className="modal-header">
 				<h1>{translation.filterTransactions}</h1>
 			</div>
@@ -102,11 +104,13 @@ export default function FilterTransactionForm({ setIsFilterOpen, transactions, o
 				<div className="range-container">
 					<input
 						type="number"
+						className={`${theme === 'dark' && 'light-dark'}`}
 						value={amountRange.min}
 						onChange={(e) => setAmountRange({ min: +e.target.value, max: amountRange.max })}
 					/>
 					<input
 						type="number"
+						className={`${theme === 'dark' && 'light-dark'}`}
 						value={amountRange.max}
 						onChange={(e) => setAmountRange({ min: amountRange.min, max: +e.target.value })}
 					/>
@@ -115,18 +119,20 @@ export default function FilterTransactionForm({ setIsFilterOpen, transactions, o
 				<div className="range-container">
 					<input
 						type="date"
+						className={`${theme === 'dark' && 'light-dark'}`}
 						value={formatDate(dateRange.min)}
 						onChange={(e) => setDateRange({ min: new Date(e.target.value), max: dateRange.max })}
 					/>
 					<input
 						type="date"
+						className={`${theme === 'dark' && 'light-dark'}`}
 						value={formatDate(dateRange.max)}
 						onChange={(e) => setDateRange({ min: dateRange.min, max: new Date(e.target.value) })}
 					/>
 				</div>
 			</div>
 			<div className="modal-footer">
-				<button className="btn" onClick={() => setIsFilterOpen(false)}>
+				<button className={`btn ${theme === 'dark' && 'dark'}`} onClick={() => setIsFilterOpen(false)}>
 					{translation.cancel}
 				</button>
 				<button className="btn btn-primary" onClick={handleSubmit}>

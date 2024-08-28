@@ -1,6 +1,6 @@
 import * as CONFIG from '../config';
 
-export default function Footer() {
+export default function Footer({ children }) {
 	return (
 		<>
 			<svg
@@ -23,6 +23,7 @@ export default function Footer() {
 				/>
 			</svg>
 			<footer>
+				{children}
 				<hr />
 				<p>
 					{CONFIG.APP_NAME.join('')} - v{CONFIG.APP_VERSION}

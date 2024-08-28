@@ -1,4 +1,9 @@
-export default function TransactionsTable({ children, translation }) {
+import { useContext } from 'react';
+import TranslationContext from '../context/TranslationContext';
+
+export default function TransactionsTable({ children }) {
+	const translation = useContext(TranslationContext);
+
 	return (
 		<table>
 			<thead>

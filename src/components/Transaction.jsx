@@ -1,6 +1,11 @@
+import { useContext } from 'react';
+import TranslationContext from '../context/TranslationContext';
 import * as CONFIG from '../config';
+import ThemeContext from '../context/ThemeContext';
 
-export default function Transaction({ transaction, setSelectedID, setIsAddOpen, setIsDelOpen, translation }) {
+export default function Transaction({ transaction, setSelectedID, setIsAddOpen, setIsDelOpen }) {
+	const translation = useContext(TranslationContext);
+	const theme = useContext(ThemeContext);
 	const date = new Date(transaction.date);
 
 	function handleEditClick() {
@@ -25,10 +30,10 @@ export default function Transaction({ transaction, setSelectedID, setIsAddOpen, 
 			</td>
 			<td>{date.toLocaleDateString()}</td>
 			<td>
-				<button className="btn" onClick={handleEditClick}>
+				<button className={`btn ${theme === 'dark' && 'light-dark'}`} onClick={handleEditClick}>
 					{translation.edit}
 				</button>
-				<button className="btn" onClick={handleDeleteClick}>
+				<button className={`btn ${theme === 'dark' && 'light-dark'}`} onClick={handleDeleteClick}>
 					{translation.delete}
 				</button>
 			</td>

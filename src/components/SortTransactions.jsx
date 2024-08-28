@@ -1,6 +1,17 @@
-export default function SortTransactions({ sortType, setSortType, translation }) {
+import { useContext } from 'react';
+import TranslationContext from '../context/TranslationContext';
+import ThemeContext from '../context/ThemeContext';
+
+export default function SortTransactions({ sortType, setSortType }) {
+	const translation = useContext(TranslationContext);
+	const theme = useContext(ThemeContext);
+
 	return (
-		<select className="sort-transactions" value={sortType} onChange={(e) => setSortType(e.target.value)}>
+		<select
+			className={`sort-transactions ${theme === 'dark' && 'light-dark'}`}
+			value={sortType}
+			onChange={(e) => setSortType(e.target.value)}
+		>
 			<option value="typeASC">
 				{translation.sortByType} {translation.ASC}
 			</option>

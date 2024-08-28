@@ -1,6 +1,10 @@
+import { useContext } from 'react';
+import TranslationContext from '../context/TranslationContext';
 import DataBox from './DataBox';
 
-export default function Summary({ transactions, translation }) {
+export default function Summary({ transactions }) {
+	const translation = useContext(TranslationContext);
+
 	const incomeSum =
 		transactions.length > 0
 			? transactions.filter((transaction) => transaction.type === 'Income').reduce((sum, transaction) => sum + transaction.amount, 0)

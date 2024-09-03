@@ -1,0 +1,61 @@
+.contactSection {
+	display: flex;
+	justify-content: space-between;
+	gap: 5rem;
+	padding: 5rem 25rem;
+	background-color: #e6f1ee;
+}
+
+.contactForm {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.formDiv {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.textarea {
+	width: 100% !important;
+}
+
+.btn {
+	align-self: flex-end;
+	width: 15rem;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+	.contactSection {
+		padding: 4rem;
+	}
+}
+
+@media only screen and (max-width: 972px) {
+	.contactSection {
+		flex-direction: column;
+		padding: 5rem 2rem;
+		gap: 2rem;
+	}
+
+	.formInput {
+		width: 100%;
+	}
+
+	.btn {
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
+	.contactSection {
+		padding: 4rem;
+	}
+}

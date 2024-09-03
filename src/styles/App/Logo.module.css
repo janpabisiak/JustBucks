@@ -1,0 +1,12 @@
+.logo {
+	font-size: 4.8rem;
+	border-radius: 8px;
+}
+
+.logoSpan {
+	color: #fff;
+}
+
+.logoSpanDark {
+	color: #181a18;
+}

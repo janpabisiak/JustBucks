@@ -1,0 +1,15 @@
+.badge-income,
+.badge-expense {
+	padding: 5px;
+	text-align: center;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.badge-income {
+	background-color: #08916a;
+}
+
+.badge-expense {
+	background-color: #d62246;
+}

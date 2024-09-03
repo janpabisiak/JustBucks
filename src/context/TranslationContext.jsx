@@ -7,7 +7,7 @@ function TranslationProvider({ children }) {
 	const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'english');
 	const translation = translations[language];
 
-	function handleChangeLanguage() {
+	function handleChangeLanguage(language) {
 		setLanguage(language);
 		localStorage.setItem('language', language);
 	}

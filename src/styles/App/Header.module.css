@@ -1,0 +1,13 @@
+.header {
+	display: flex;
+	background-color: #08916a;
+	justify-content: center;
+	height: 15rem;
+	padding: 1rem;
+}
+
+.select {
+	position: absolute;
+	top: 2vh;
+	right: 1vw;
+}

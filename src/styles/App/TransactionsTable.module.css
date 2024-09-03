@@ -1,0 +1,57 @@
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+thead {
+	background-color: #08916a;
+	color: #fff;
+	text-align: left;
+}
+
+th,
+td {
+	padding: 10px;
+}
+
+td button {
+	height: 3rem !important;
+	padding: 0 1rem !important;
+}
+
+th:last-child,
+td:last-child {
+	display: flex;
+	justify-content: end;
+	gap: 0.5rem;
+}
+
+tr:nth-of-type(even) {
+	background-color: #f5f5f5;
+}
+
+tr:nth-of-type(even).dark {
+	color: #fff;
+	background-color: #1e201e !important;
+}
+
+tr:nth-of-type(even).dark .btn {
+	color: #fff;
+	background-color: #181a18 !important;
+}
+
+.badgeIncome,
+.badgeExpense {
+	padding: 5px;
+	text-align: center;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.badgeIncome {
+	background-color: #08916a;
+}
+
+.badgeExpense {
+	background-color: #d62246;
+}

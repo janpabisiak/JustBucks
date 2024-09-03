@@ -1,0 +1,34 @@
+.footer {
+	display: flex;
+	justify-content: space-between;
+	color: #fff;
+	background-color: #181a18;
+	padding: 1rem 16rem;
+}
+
+.footerLink {
+	font-size: 1.6rem;
+	color: #fff;
+	transition: 300ms;
+}
+
+.footerLink:hover {
+	color: #08916a;
+}
+
+@media only screen and (max-width: 768px) {
+	.footer {
+		display: flex;
+		justify-content: center;
+	}
+
+	.githubLink {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 972px) {
+	.footer {
+		padding: 1rem 2rem;
+	}
+}

@@ -1,0 +1,85 @@
+.modal {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	background-color: #fff;
+	width: 40rem;
+	max-height: 60rem;
+	border-radius: 10px;
+	transform: translate(-50%, -50%);
+	border: 2px solid #08916a;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+	padding: 2rem;
+	z-index: 1;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.modalHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.modalFooter {
+	display: flex;
+	justify-content: end;
+	margin-top: 2rem;
+	gap: 1rem;
+}
+
+.closeBtn {
+	color: #08916a;
+	font-size: 3rem;
+	cursor: pointer;
+	transition: 300ms;
+}
+
+.closeBtn:hover {
+	color: #067455;
+	font-size: 3rem;
+	cursor: pointer;
+}
+
+.modal form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.modal form select,
+.modal form button,
+.modal form input {
+	width: 100%;
+}
+
+.checkboxContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-bottom: 20px;
+}
+
+.checkbox {
+	display: flex;
+	align-items: center;
+}
+
+.modal input[type='checkbox'] {
+	width: 16px !important;
+	margin-right: 10px;
+}
+
+.rangeContainer {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.rangeContainer input {
+	width: 170px !important;
+}

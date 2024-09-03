@@ -1,0 +1,15 @@
+footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background-color: #08916a;
+	color: #fff;
+	margin-top: -5px;
+	padding-bottom: 2rem;
+}
+
+footer select {
+	position: absolute;
+	right: 2vh;
+}

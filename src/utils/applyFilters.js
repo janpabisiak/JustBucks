@@ -5,7 +5,8 @@ export default function applyFilters(transactions, filters, searchQuery) {
 		const matchesAmount = !filters || (transaction.amount >= filters.amount.min && transaction.amount <= filters.amount.max);
 		const matchesDate =
 			!filters ||
-			(transaction.date.getTime() >= filters.date.min.getTime() && transaction.date.getTime() <= filters.date.max.getTime());
+			(new Date(transaction.date).getTime() >= new Date(filters.date.min).getTime() &&
+				new Date(transaction.date).getTime() <= new Date(filters.date.max).getTime());
 		const matchesSearch = searchQuery ? transaction.title.toLowerCase().includes(searchQuery.toLowerCase()) : true;
 
 		return matchesTypes && matchesCategory && matchesAmount && matchesDate && matchesSearch;

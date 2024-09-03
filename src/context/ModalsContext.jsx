@@ -7,6 +7,7 @@ const initialState = {
 	isDelOpen: false,
 	isFilterOpen: false,
 	isImportOpen: false,
+	isSettingsOpen: false,
 };
 
 function reducer(state, action) {
@@ -31,6 +32,11 @@ function reducer(state, action) {
 				...initialState,
 				isImportOpen: !state.isImportOpen,
 			};
+		case 'toggleSettings':
+			return {
+				...initialState,
+				isSettingsOpen: !state.isSettingsOpen,
+			};
 		default:
 			throw new Error('Wrong operation!');
 	}
@@ -38,10 +44,12 @@ function reducer(state, action) {
 
 function ModalsProvider({ children }) {
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const { isAddOpen, isDelOpen, isFilterOpen, isImportOpen } = state;
+	const { isAddOpen, isDelOpen, isFilterOpen, isImportOpen, isSettingsOpen } = state;
 
 	return (
-		<ModalsContext.Provider value={{ isAddOpen, isDelOpen, isFilterOpen, isImportOpen, dispatch }}>{children}</ModalsContext.Provider>
+		<ModalsContext.Provider value={{ isAddOpen, isDelOpen, isFilterOpen, isImportOpen, isSettingsOpen, dispatch }}>
+			{children}
+		</ModalsContext.Provider>
 	);
 }
 

@@ -1,0 +1,31 @@
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: 4rem;
+	gap: 10px;
+}
+
+.paginationSpan {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	font-size: 1.6rem;
+	border: 2px solid #f5f5f5;
+	color: #222;
+	border-radius: 10px;
+	height: 3rem;
+	width: 3rem;
+	cursor: pointer;
+	transition: 300ms;
+}
+
+.paginationSpan:hover,
+.paginationSpanActive {
+	color: #08916a;
+	border: 2px solid #08916a;
+}
+
+.pagination .dark {
+	color: #fff;
+}

@@ -1,0 +1,32 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 16rem;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: #fff;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.logo {
+	font-size: 3.2rem;
+	border-radius: 8px;
+}
+
+.navUl {
+	display: flex;
+	list-style: none;
+	gap: 2rem;
+}
+
+@media only screen and (max-width: 972px) {
+	.header {
+		padding: 1rem 2rem;
+	}
+
+	.navUl {
+		display: none;
+	}
+}

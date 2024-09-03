@@ -8,6 +8,7 @@ const TransactionsContext = createContext();
 
 const initialState = {
 	transactions: JSON.parse(localStorage.getItem('transactions')) || [],
+	currency: JSON.parse(localStorage.getItem('currency')) || 'USD',
 	filters: null,
 	sortType: CONFIG.DEFAULT_SORT,
 	selectedID: null,
@@ -84,6 +85,11 @@ function reducer(state, action) {
 				...state,
 				page: action.payload,
 			};
+		case 'currency/set':
+			return {
+				...state,
+				currency: action.payload,
+			};
 		default:
 			throw new Error('Wrong operation.');
 	}
@@ -93,6 +99,7 @@ function TransactionsProvider({ children }) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const {
 		transactions,
+		currency,
 		filteredTransactions,
 		sortedTransactions,
 		paginatedTransactions,
@@ -104,6 +111,10 @@ function TransactionsProvider({ children }) {
 	} = state;
 
 	const pages = Math.ceil(sortedTransactions.length / CONFIG.TRANSACTIONS_PER_PAGE);
+
+	useEffect(() => {
+		localStorage.setItem('currency', JSON.stringify(currency));
+	}, [currency]);
 
 	useEffect(() => {
 		localStorage.setItem('transactions', JSON.stringify(transactions));
@@ -128,6 +139,7 @@ function TransactionsProvider({ children }) {
 		<TransactionsContext.Provider
 			value={{
 				transactions,
+				currency,
 				filteredTransactions,
 				sortedTransactions,
 				paginatedTransactions,

@@ -1,0 +1,13 @@
+.appliedFiltersBox {
+	background-color: #cee9e1;
+	margin-bottom: 2rem;
+	padding: 1rem;
+}
+
+.appliedFiltersBox p:first-child {
+	font-weight: 600;
+}
+
+.appliedFiltersBox ul {
+	list-style: none;
+}

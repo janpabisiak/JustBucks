@@ -1,3 +1,5 @@
+<img align="center" src="./cover.png">
+
 # JustBucks - Finance Manager [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE)
 
 JustBucks is a user-friendly, web-based personal finance management tool designed to help individuals track their income, expenses, and overall financial health. With an intuitive interface, JustBucks provides clear visualizations of spending habits, allowing users to make informed financial decisions.

@@ -4,7 +4,7 @@
 
 JustBucks is a user-friendly, web-based personal finance management tool designed to help individuals track their income, expenses, and overall financial health. With an intuitive interface, JustBucks provides clear visualizations of spending habits, allowing users to make informed financial decisions.
 
-[Demo]()
+[Demo](https://transaction-tracker-theta.vercel.app/)
 
 ## Features
 

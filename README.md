@@ -9,11 +9,11 @@ JustBucks is a user-friendly, web-based personal finance management tool designe
 ## Features
 
 -   Dashboard Overview: Displays key financial metrics including total income, total expenses, and net balance at a glance.
--   Expense Categorization: Allow to categorize transactions with categories which suits you best. You can define categories, you want to use.
+-   Expense Categorization: Allow to categorize transactions with categories that suit you best. You'll be able to define the categories you want to use.
 -   Interactive Charts: Visual representations of spending distribution across various categories for easy analysis.
--   Transaction Management: Allows users to add, edit, and delete transactions with ease.
--   Search, sort and Filter: Quickly find specific transactions with a search bar and advanced filtering options.
--   User settings: Select between light and dark mode, use a language that you understand, set currency for your financial operations.
+-   Transaction Management: Allows users to easily add, edit, and delete transactions.
+-   Search, sort, and Filter: Quickly find specific transactions with a search bar and advanced filtering options.
+-   User settings: Select between light and dark mode, use a language you understand, and set currency for your financial operations.
 -   Pagination: Efficiently navigate through large datasets with pagination controls.
 
 ## Tech Stack

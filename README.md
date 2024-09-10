@@ -47,7 +47,7 @@ Install dependencies
   npm install
 ```
 
-Start the server
+Start the app instance
 
 ```bash
   npm run dev

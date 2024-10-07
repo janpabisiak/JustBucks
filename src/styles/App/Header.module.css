@@ -11,3 +11,10 @@
 	top: 2vh;
 	right: 1vw;
 }
+
+@media only screen and (max-width: 768px) {
+	.header {
+		height: 18rem;
+		padding: 5rem;
+	}
+}

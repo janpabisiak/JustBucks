@@ -7,7 +7,7 @@ function Footer() {
 
 	return (
 		<footer className={styles.footer}>
-			<a href="" className={`${styles.footerLink} ${styles.githubLink}`}>
+			<a href="https://github.com/janpabisiak/JustBucks" className={`${styles.footerLink} ${styles.githubLink}`}>
 				{translation.githubRepository}
 			</a>
 			<p>

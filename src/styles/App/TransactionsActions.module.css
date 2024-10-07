@@ -3,3 +3,13 @@
 	gap: 0.5rem;
 	margin-bottom: 3rem;
 }
+
+@media only screen and (max-width: 768px) {
+	.transactionsActions {
+		flex-direction: column;
+	}
+
+	.transactionsActions input {
+		width: 100%;
+	}
+}

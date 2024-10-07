@@ -202,6 +202,10 @@ a:hover {
 }
 
 @media only screen and (max-width: 768px) {
+	main {
+		padding: 2rem 8vw;
+	}
+
 	.background-container {
 		background-image: none;
 		height: auto;
@@ -215,6 +219,10 @@ a:hover {
 
 	.section-description {
 		padding: 0 1rem;
+	}
+
+	.settings-btn {
+		right: 2vw;
 	}
 }
 

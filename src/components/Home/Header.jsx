@@ -23,9 +23,6 @@ function Header() {
 					<li>
 						<a href="#contact">{translation.contact}</a>
 					</li>
-					<li>
-						<a href="">{translation.login}</a>
-					</li>
 				</ul>
 			</nav>
 			<a href="/app" className="btn btn-primary">

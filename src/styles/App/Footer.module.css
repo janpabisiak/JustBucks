@@ -13,3 +13,9 @@ footer select {
 	position: absolute;
 	right: 2vh;
 }
+
+@media only screen and (max-width: 768px) {
+	footer {
+		padding: 1rem;
+	}
+}

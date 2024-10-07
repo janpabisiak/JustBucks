@@ -2,7 +2,6 @@ const polish = {
 	home: 'Strona główna',
 	features: 'Funkcje',
 	contact: 'Kontakt',
-	login: 'Logowanie',
 	heroTitle1: 'Śledź swoje transakcje',
 	heroTitle2: 'z łatwością',
 	heroDescription:

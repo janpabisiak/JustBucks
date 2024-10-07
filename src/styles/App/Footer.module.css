@@ -1,4 +1,4 @@
-footer {
+.footer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -9,13 +9,8 @@ footer {
 	padding-bottom: 2rem;
 }
 
-footer select {
-	position: absolute;
-	right: 2vh;
-}
-
 @media only screen and (max-width: 768px) {
-	footer {
+	.footer {
 		padding: 1rem;
 	}
 }

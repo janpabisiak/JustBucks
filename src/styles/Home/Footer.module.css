@@ -1,9 +1,14 @@
 .footer {
-	display: flex;
-	justify-content: space-between;
 	color: #fff;
 	background-color: #181a18;
 	padding: 1rem 16rem;
+}
+
+.footerContainer {
+	display: flex;
+	justify-content: space-between;
+	max-width: 1280px;
+	margin: 0 auto;
 }
 
 .footerLink {

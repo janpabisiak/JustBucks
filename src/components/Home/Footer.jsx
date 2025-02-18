@@ -7,15 +7,17 @@ function Footer() {
 
 	return (
 		<footer className={styles.footer}>
-			<a href="https://github.com/janpabisiak/JustBucks" className={`${styles.footerLink} ${styles.githubLink}`}>
-				{translation.githubRepository}
-			</a>
-			<p>
-				Copyright © {currentYear} |{' '}
-				<a href="https://janpabisiak.com" className={styles.footerLink}>
-					Jan Pabisiak
+			<div className={styles.footerContainer}>
+				<a href="https://github.com/janpabisiak/JustBucks" className={`${styles.footerLink} ${styles.githubLink}`}>
+					{translation.githubRepository}
 				</a>
-			</p>
+				<p>
+					Copyright © {currentYear} |{' '}
+					<a href="https://janpabisiak.com" className={styles.footerLink}>
+						Jan Pabisiak
+					</a>
+				</p>
+			</div>
 		</footer>
 	);
 }

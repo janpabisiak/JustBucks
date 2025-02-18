@@ -1,9 +1,14 @@
 .featuresSection {
+	background-color: #e6f1ee;
+	padding: 5rem 16rem;
+}
+
+.mainContainer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #e6f1ee;
-	padding: 5rem 16rem;
+	max-width: 1280px;
+	margin: 0 auto;
 }
 
 .featuresContainer {
@@ -12,7 +17,8 @@
 	grid-template-rows: 1fr 1fr;
 	column-gap: 10rem;
 	row-gap: 6rem;
-	padding: 5rem 0;
+	padding: 5rem;
+	margin-top: 3rem;
 }
 
 .featuresItem {

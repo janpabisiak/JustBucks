@@ -1,9 +1,14 @@
 .contactSection {
+	padding: 5rem 25rem;
+	background-color: #e6f1ee;
+}
+
+.contactContainer {
 	display: flex;
 	justify-content: space-between;
 	gap: 5rem;
-	padding: 5rem 25rem;
-	background-color: #e6f1ee;
+	max-width: 1280px;
+	margin: 0 auto;
 }
 
 .contactForm {
@@ -39,7 +44,7 @@
 }
 
 @media only screen and (max-width: 972px) {
-	.contactSection {
+	.contactContainer {
 		flex-direction: column;
 		padding: 5rem 2rem;
 		gap: 2rem;

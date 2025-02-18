@@ -27,7 +27,7 @@ function Main() {
 	}, [isAuthenticated]);
 
 	return (
-		<main>
+		<main style={{ flex: 1 }}>
 			<Summary />
 			<Charts categories={categories} />
 			<Transactions />

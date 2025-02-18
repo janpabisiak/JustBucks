@@ -1,7 +1,12 @@
 .heroSection {
+	padding: 25vh 20rem;
+}
+
+.heroContainer {
 	display: flex;
 	gap: 2rem;
-	padding: 25vh 20rem;
+	max-width: 1280px;
+	margin: 0 auto;
 }
 
 .heroText {
@@ -58,6 +63,6 @@
 	}
 
 	.heroSection img {
-		width: 60vw;
+		display: none;
 	}
 }

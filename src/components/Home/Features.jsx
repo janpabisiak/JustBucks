@@ -8,12 +8,14 @@ function Features() {
 
 	return (
 		<section className={styles.featuresSection} id="features">
-			<h2 className="section-title">{translation.featuresTitle}</h2>
-			<p className="section-description">{translation.featuresDescription}</p>
-			<div className={styles.featuresContainer}>
-				{featuresList.map((item, index) => {
-					return <FeaturesItem key={item.id} item={item} index={index} />;
-				})}
+			<div className={styles.mainContainer}>
+				<h2 className="section-title">{translation.featuresTitle}</h2>
+				<p className="section-description">{translation.featuresDescription}</p>
+				<div className={styles.featuresContainer}>
+					{featuresList.map((item, index) => {
+						return <FeaturesItem key={item.id} item={item} index={index} />;
+					})}
+				</div>
 			</div>
 		</section>
 	);
